@@ -16,17 +16,18 @@ export default function MailingList() {
   const [mailings, setMailings] = useState<Mailing[]>([])
 
   useEffect(() => {
-    fetchMailings()
+    // fetchMailings()
   }, [])
 
-  const fetchMailings = async () => {
-    const fetchedMailings = await getMailings()
-    setMailings(fetchedMailings)
-  }
+//   const fetchMailings = async () => {
+//     const fetchedMailings: Mailing[] = await getMailings()
+//     console.log(fetchedMailings) // Debug API response
+//     setMailings(fetchedMailings)
+//   }
 
   const handleDelete = async (id: string) => {
     await deleteMailing(id)
-    fetchMailings()
+    // fetchMailings()
   }
 
   return (
@@ -74,4 +75,3 @@ export default function MailingList() {
     </div>
   )
 }
-
