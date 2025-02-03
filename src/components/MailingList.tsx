@@ -3,31 +3,23 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Trash2 } from "lucide-react"
-import { getMailings, deleteMailing } from "@/lib/api"
-
-interface Mailing {
-  id: string
-  mailerName: string
-  listName: string
-  scheduleDateTime: string
-}
+import { getMailings, deleteMailing, type Mailing } from "@/lib/api"
 
 export default function MailingList() {
   const [mailings, setMailings] = useState<Mailing[]>([])
 
   useEffect(() => {
-    // fetchMailings()
+    fetchMailings()
   }, [])
 
-//   const fetchMailings = async () => {
-//     const fetchedMailings: Mailing[] = await getMailings()
-//     console.log(fetchedMailings) // Debug API response
-//     setMailings(fetchedMailings)
-//   }
+  const fetchMailings = async () => {
+    const fetchedMailings = await getMailings()
+    setMailings(fetchedMailings)
+  }
 
   const handleDelete = async (id: string) => {
     await deleteMailing(id)
-    // fetchMailings()
+    fetchMailings()
   }
 
   return (
@@ -52,8 +44,8 @@ export default function MailingList() {
                 transition={{ duration: 0.3 }}
                 className="hover:bg-white/5 transition-colors"
               >
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{mailing.mailerName}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{mailing.listName}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{mailing.mailerId}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-white">{mailing.listId}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-white">
                   {new Date(mailing.scheduleDateTime).toLocaleString()}
                 </td>
@@ -75,3 +67,4 @@ export default function MailingList() {
     </div>
   )
 }
+

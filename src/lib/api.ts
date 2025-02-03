@@ -1,4 +1,4 @@
-interface Mailing {
+export interface Mailing {
     id: string
     mailerId: string
     listId: string
@@ -7,6 +7,8 @@ interface Mailing {
   
   // Mock data
   let mailings: Mailing[] = []
+
+  
   
   export async function getMailings(): Promise<Mailing[]> {
     return mailings
@@ -22,4 +24,5 @@ interface Mailing {
     mailings = mailings.filter((mailing) => mailing.id !== id)
   }
   
+
   

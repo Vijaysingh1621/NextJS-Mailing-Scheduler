@@ -48,7 +48,7 @@ export default function MailingForm({ onClose }: { onClose: () => void }) {
 
   const inputClasses =
     "block w-full px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/20 focus:border-transparent"
-  const labelClasses = "block text-sm font-medium text-gray-300 mb-1"
+  const labelClasses = "block text-sm font-medium text-gray-300 mb-1 z-100"
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
